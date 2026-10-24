@@ -2,15 +2,14 @@
 
 An Excel variance tracker built on a public city budget dataset. It rolls 1,533 budget lines up to divisions and departments, flags unusual changes using a two-test rule (% and $), and ranks the biggest line-level changes.
 
-I built it as a learning project to practise variance analysis, the routine of comparing planned and actual spend, flagging what's unusual, and asking why.
+I built it as a learning project to practice variance analysis, the routine of comparing planned and actual spend, flagging what's unusual, and asking why.
 
 ## Dataset
 
 - **Source:** "City Budget Summary and Recommendations" on Kaggle
 - **Author:** thedevastator
-- **Link:** [paste the Kaggle URL]
+- **Link:** https://www.kaggle.com/datasets/thedevastator/city-budget-summary-and-recommendations
 - **File used:** `fy2022-proposed-city-budget-book-1.csv` (1,533 rows, one fund: City General)
-- **License:** [check the license on the Kaggle page and state it here]
 
 Columns used: Fund, Account Type, Division, Department, Summary Account, GL Account, 2019 Actual, 2020 Actual, 2021 Budget, 2022 Recommend, 2023 Forecast.
 
@@ -40,7 +39,7 @@ File: `city_budget_variance_analysis.xlsx`
 
 - Budgeted spend rises 5.8% from the 2020 actual ($483.0M) to the 2021 budget ($510.9M), then 5.7% to the 2022 recommendation ($539.9M).
 - Public Safety rises 20.6% (+$31.5M) from 2020 actual to 2021 budget, more than the whole net increase.
-- Police salaries go from $19.0M to $36.5M (+92%) and Fire salaries from $17.7M to $31.5M (+78%). Separate vacation and sick-leave lines show spending in 2020 but zero in the budget. This may be a reclassification into salaries, but the data does not say, so it needs confirming with the budget owner.
+- Police salaries go from $19.0M to $36.5M (+92%) and Fire salaries from $17.7M to $31.5M (+78%). Separate vacation and sick-leave lines show spending in 2020 but zero in the budget. This may be a reclassification into salaries, but the data does not mention it.
 - Debt service lines (PPBA rental payments) swing sharply between years.
 - The 2021 and 2022 budgets balance exactly, but the 2023 forecast shows expenses about $12.2M above revenue.
 - 52 of 1,339 expense lines are flagged for 2021B vs 2020A, and 20 for 2022R vs 2021B.
@@ -51,37 +50,12 @@ File: `city_budget_variance_analysis.xlsx`
 - Large line-level changes can come from account reclassification rather than real spending changes. Treat flags as questions to investigate, not findings.
 - The source does not explain any change. Interpretations in the workbook and in this README are mine and are unconfirmed.
 
-## Excel skills practised
-
-- `SUMIFS` to roll lines up by division and department
-- `COUNTIFS` with wildcards to count flagged lines
-- `IF` + `ABS` to build a two-threshold flag driven by input cells
-- `LARGE` + `MATCH` + `INDEX` for a live Top 15 list, with a small `ROW()` tie-breaker so equal values don't return the same row
-- Conditional formatting for REVIEW flags
-- Check rows that reconcile every summary total back to the source data
-- Charts and a documented assumptions and limitations sheet
-
 ## How to use
 
 1. Download `city_budget_variance_analysis.xlsx`.
 2. Open the **Overview** sheet and adjust the yellow threshold cells if you want.
 3. Review **Division Summary**, **Department Summary** and **Top Variances**.
-4. Add your own explanations in the yellow "Drivers and actions" columns.
-
-## Repo contents
-
-```
-├── README.md
-├── city_budget_variance_analysis.xlsx
-└── images/
-    ├── division-variance-chart.png
-    └── top-variances.png
-```
 
 ## Credits
 
 Data: "City Budget Summary and Recommendations" by thedevastator on Kaggle.
-
-## Author
-
-[Your name] | [LinkedIn profile URL]
